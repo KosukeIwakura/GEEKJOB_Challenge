@@ -26,30 +26,25 @@ public class メソット extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    void myprofile(PrintWriter pw) {
+    Boolean myprofile(PrintWriter pw) {
         pw.print("私の名前は岩倉です<br>");
         pw.print("好きな音楽はジャズです<br>");
         pw.print("趣味はゲームと旅行です<br>");
+        return true;
     }
-    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            myprofile(out);
-            /* TODO output your page here. You may use following sample code. */
+            if (myprofile(out)) {
+                out.println("この処理は正しく実行できました");
+            } else {
+                out.print("正しく実行できませんでした");
+            }
 
+            /* TODO output your page here. You may use following sample code. */
         }
     }
 
